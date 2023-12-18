@@ -9,16 +9,6 @@ title __SRC's Class Diagram__\n
   }
   
 
-  namespace  {
-    class Student {
-        - age : int
-        - name : String
-        + Student()
-        + toString()
-    }
-  }
-  
-
 
 
 right footer

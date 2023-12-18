@@ -9,12 +9,6 @@ title __WHATEVER2D's Class Diagram__\n
   
 
   namespace  {
-    class Student {
-    }
-  }
-  
-
-  namespace  {
     namespace P2D {
       class TP2D.AnimatedThings {
       }
@@ -40,7 +34,23 @@ title __WHATEVER2D's Class Diagram__\n
 
   namespace  {
     namespace P2D {
+      class TP2D.GameRender {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace P2D {
       class TP2D.HitBox {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace P2D {
+      class TP2D.MainInterface {
       }
     }
   }
@@ -73,6 +83,13 @@ title __WHATEVER2D's Class Diagram__\n
   TP2D.AnimatedThings -up-|> TP2D.SolidThings
   TP2D.Dungeon o-- TP2D.TileManager : tileManager
   TP2D.DynamicThings -up-|> TP2D.AnimatedThings
+  TP2D.GameRender -up-|> javax.swing.JPanel
+  TP2D.GameRender o-- TP2D.Dungeon : dungeon
+  TP2D.GameRender o-- TP2D.DynamicThings : hero
+  TP2D.MainInterface -up-|> javax.swing.JFrame
+  TP2D.MainInterface o-- TP2D.Dungeon : dungeon
+  TP2D.MainInterface o-- TP2D.DynamicThings : hero
+  TP2D.MainInterface o-- TP2D.GameRender : panel
   TP2D.SolidThings -up-|> TP2D.Things
   TP2D.SolidThings o-- TP2D.HitBox : hitBox
 
