@@ -42,6 +42,14 @@ title __WHATEVER2D's Class Diagram__\n
 
   namespace  {
     namespace P2D {
+      class TP2D.Hero {
+      }
+    }
+  }
+  
+
+  namespace  {
+    namespace P2D {
       class TP2D.HitBox {
       }
     }
@@ -85,10 +93,11 @@ title __WHATEVER2D's Class Diagram__\n
   TP2D.DynamicThings -up-|> TP2D.AnimatedThings
   TP2D.GameRender -up-|> javax.swing.JPanel
   TP2D.GameRender o-- TP2D.Dungeon : dungeon
-  TP2D.GameRender o-- TP2D.DynamicThings : hero
+  TP2D.GameRender o-- TP2D.Hero : hero
+  TP2D.Hero -up-|> TP2D.DynamicThings
   TP2D.MainInterface -up-|> javax.swing.JFrame
   TP2D.MainInterface o-- TP2D.Dungeon : dungeon
-  TP2D.MainInterface o-- TP2D.DynamicThings : hero
+  TP2D.MainInterface o-- TP2D.Hero : hero
   TP2D.MainInterface o-- TP2D.GameRender : panel
   TP2D.SolidThings -up-|> TP2D.Things
   TP2D.SolidThings o-- TP2D.HitBox : hitBox

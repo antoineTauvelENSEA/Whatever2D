@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class GameRender extends JPanel {
     private Dungeon dungeon;
-    private DynamicThings hero;
+    private Hero hero;
 
     public GameRender(Dungeon dungeon, DynamicThings hero) {
         this.dungeon = dungeon;
-        this.hero = hero;
+        this.hero = Hero.getInstance();
     }
 
     @Override
