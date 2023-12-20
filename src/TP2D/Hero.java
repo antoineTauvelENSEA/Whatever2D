@@ -6,6 +6,8 @@ import java.io.File;
 public final class Hero extends DynamicThings{
 
     private static volatile Hero instance = null;
+    private Orientation orientation;
+
     private Hero() {
             super(32,32, 32,320);
     }
@@ -19,5 +21,9 @@ public final class Hero extends DynamicThings{
             }
         }
         return Hero.instance;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
     }
 }

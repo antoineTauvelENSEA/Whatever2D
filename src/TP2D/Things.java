@@ -3,8 +3,8 @@ package TP2D;
 import java.awt.*;
 
 public class Things {
-    protected int x;
-    protected int y;
+    protected double x;
+    protected double y;
     protected int width;
     protected int height;
 
@@ -26,7 +26,7 @@ public class Things {
     }
 
     public void draw(Graphics g){
-        g.drawImage(image,x,y,null);
+        g.drawImage(image,(int) x,(int) y,null);
     }
 
 }

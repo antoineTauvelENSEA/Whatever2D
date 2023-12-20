@@ -11,4 +11,9 @@ public class DynamicThings extends AnimatedThings{
     public DynamicThings(int x, int y, Image image) {
         super(x, y, image);
     }
+
+    public void move(double moveX, double moveY){
+        this.x=this.x+moveX;
+        this.y=this.y+moveY;
+    }
 }

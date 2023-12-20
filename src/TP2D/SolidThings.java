@@ -14,6 +14,4 @@ public class SolidThings extends Things {
         super(x, y, image);
         this.hitBox=new HitBox(x,y, image.getWidth(null), image.getHeight(null));
     }
-
-
 }
