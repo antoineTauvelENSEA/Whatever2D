@@ -16,4 +16,8 @@ public class DynamicThings extends AnimatedThings{
         this.x=this.x+moveX;
         this.y=this.y+moveY;
     }
+
+    public void setImage(Image image){
+        this.image=image;
+    }
 }

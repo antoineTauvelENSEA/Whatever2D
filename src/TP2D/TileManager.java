@@ -31,9 +31,9 @@ public class TileManager {
         catch (Exception e){
             e.printStackTrace();
         }
-        tiles = new Image[tileSheet.getHeight()/height][tileSheet.getWidth()/width];
-        for(int y=0;y<tileSheet.getHeight();y=y+height) {
-            for (int x = 0; x < tileSheet.getWidth(); x = x + width) {
+        tiles = new Image[tileSheet.getWidth()/width][tileSheet.getHeight()/height];
+        for(int y=0;y+heigth<tileSheet.getHeight();y=y+height) {
+            for (int x = 0; x +width < tileSheet.getWidth(); x = x + width) {
                 tiles[x / width][y / height] = tileSheet.getSubimage(x, y, width, height);
             }
         }

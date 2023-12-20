@@ -11,4 +11,9 @@ public class AnimatedThings extends SolidThings {
     public AnimatedThings(int x, int y, Image image) {
         super(x, y, image);
     }
+
+    @Override
+    public void draw(Graphics g){
+
+    }
 }

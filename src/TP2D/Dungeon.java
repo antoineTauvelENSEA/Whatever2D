@@ -27,14 +27,31 @@ public class Dungeon {
         respawnListOfThings();
     }
 
+    public Dungeon(int height, int width, TileManager tileManager) {
+        this.height = height;
+        this.width = width;
+        this.tileManager = tileManager;
+        this.map = new char[width][height];
+        for (int x=0;x<width;x++){
+            for (int y=0;y<height;y++){
+                if ((x==0)||(x==width-1)||(y==0)||(y==height-1)){
+                    this.map[x][y]='W';
+                }
+                else {
+                    this.map[x][y]=' ';
+                }
+            }
+        }
+        respawnListOfThings();
+    }
     private void respawnListOfThings(){
         renderList.clear();
         for (int x=0;x<width;x++){
             for (int y=0;y<height;y++){
                 switch (this.map[x][y]){
-                    case ' ' :  renderList.add(new Things(x* tileManager.getWidth(),y* tileManager.getHeigth(), tileManager.getTile(0,0)));
+                    case ' ' :  renderList.add(new Things(x* tileManager.getWidth(),y* tileManager.getHeigth(), tileManager.getTile(0,2)));
                                 break;
-                    case 'W' :  renderList.add(new SolidThings(x* tileManager.getWidth(),y* tileManager.getHeigth(), tileManager.getTile(1,1)));
+                    case 'W' :  renderList.add(new SolidThings(x* tileManager.getWidth(),y* tileManager.getHeigth(), tileManager.getTile(0,0)));
                                 break;
                     case 'E' :  renderList.add(new SolidThings(x* tileManager.getWidth(),y* tileManager.getHeigth(), tileManager.getTile(0,1)));
                                 break;

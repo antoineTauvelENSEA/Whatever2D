@@ -34,4 +34,9 @@ public class HitBox {
     public double getY() {
         return y;
     }
+
+    public void move(double dx, double dy){
+        x=x+dx;
+        y=y+dy;
+    }
 }

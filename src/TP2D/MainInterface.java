@@ -4,11 +4,14 @@ import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class MainInterface extends JFrame implements KeyListener {
-    Dungeon dungeon = new Dungeon(7,8);
+    TileManager tileManager = new TileManager(48,48,"./img/tileSet.png");
+    Dungeon dungeon = new Dungeon(15,10,tileManager);
     Hero hero = Hero.getInstance();
     GameRender panel = new GameRender(dungeon,hero);
     public MainInterface() throws HeadlessException {
@@ -18,6 +21,15 @@ public class MainInterface extends JFrame implements KeyListener {
         this.setVisible(true);
         this.setSize(new Dimension(400,600));
         this.addKeyListener(this);
+
+        ActionListener animationTimer=new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repaint();
+            }
+        };
+        Timer timer = new Timer(50,animationTimer);
+        timer.start();
     }
 
     public static void main(String[] args){
@@ -33,29 +45,35 @@ public class MainInterface extends JFrame implements KeyListener {
         switch (e.getKeyCode()){
             case KeyEvent.VK_LEFT:
                 System.out.println("Left");
-                hero.move(10,0);
+                hero.moveIfPossible(-3,0,dungeon);
                 hero.setOrientation(Orientation.LEFT);
+                hero.setWalking(true);
                 break;
             case KeyEvent.VK_RIGHT:
                 System.out.println("Right");
-                hero.move(-10,0);
+                hero.moveIfPossible(3,0,dungeon);
                 hero.setOrientation(Orientation.RIGHT);
+                hero.setWalking(true);
                 break;
             case KeyEvent.VK_UP:
                 System.out.println("Up");
-                hero.move(0,-10);
+                hero.moveIfPossible(0,-3,dungeon);
                 hero.setOrientation(Orientation.UP);
+                hero.setWalking(true);
                 break;
             case KeyEvent.VK_DOWN:
                 System.out.println("Down");
-                hero.move(0,10);
+                hero.moveIfPossible(0,3,dungeon);
                 hero.setOrientation(Orientation.DOWN);
+                hero.setWalking(true);
                 break;
         }
+        this.repaint();
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+        hero.setWalking(false);
 
     }
 }
