@@ -11,7 +11,7 @@ import java.awt.event.KeyListener;
 
 public class MainInterface extends JFrame implements KeyListener {
     TileManager tileManager = new TileManager(48,48,"./img/tileSet.png");
-    Dungeon dungeon = new Dungeon(15,10,tileManager);
+    Dungeon dungeon = new Dungeon("./gameData/level1.txt",tileManager);
     Hero hero = Hero.getInstance();
     GameRender panel = new GameRender(dungeon,hero);
     public MainInterface() throws HeadlessException {
@@ -19,7 +19,7 @@ public class MainInterface extends JFrame implements KeyListener {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.getContentPane().add(panel);
         this.setVisible(true);
-        this.setSize(new Dimension(400,600));
+        this.setSize(new Dimension(dungeon.getWidth()* tileManager.getWidth(), dungeon.getHeight()*tileManager.getHeigth()));
         this.addKeyListener(this);
 
         ActionListener animationTimer=new ActionListener() {

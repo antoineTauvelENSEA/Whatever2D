@@ -12,7 +12,7 @@ public final class Hero extends DynamicThings{
     private boolean isWalking = false;
 
     private Hero() {
-            super(150,150, 48,52);
+            super(120,120, 48,52);
             try{this.setImage(ImageIO.read(new File("img/heroTileSheet.png")));}
             catch (Exception e){
                 e.printStackTrace();
@@ -61,21 +61,13 @@ public final class Hero extends DynamicThings{
 
     @Override
     public void draw(Graphics g){
-        int attitude=0;
-        switch(orientation){
-            case UP :
-                attitude=2;
-                break;
-            case DOWN:
-                attitude=0;
-                break;
-            case LEFT :
-                attitude=1;
-                break;
-            case RIGHT:
-                attitude = 3;
-                break;
-        }
+        int attitude = switch (orientation) {
+            case UP -> 2;
+            case DOWN -> 0;
+            case LEFT -> 1;
+            case RIGHT -> 3;
+            default -> 0;
+        };
         int index = (int) ((System.currentTimeMillis()/125)%10);
         index=isWalking?index:0;
         g.drawImage(image,(int)x,(int)y,(int)x+48,(int) y+ 52,index*96,100*attitude,(index+1)*96,100*(attitude+1),null,null);

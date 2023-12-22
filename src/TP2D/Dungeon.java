@@ -1,5 +1,8 @@
 package TP2D;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class Dungeon {
@@ -27,6 +30,14 @@ public class Dungeon {
         respawnListOfThings();
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
     public Dungeon(int height, int width, TileManager tileManager) {
         this.height = height;
         this.width = width;
@@ -44,6 +55,42 @@ public class Dungeon {
         }
         respawnListOfThings();
     }
+
+    public Dungeon(String fileName, TileManager tileManager) {
+        this.tileManager = tileManager;
+        int height=0;
+        int width=0;
+        try{
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fileReader);
+            while(br.readLine()!=null){
+                height++;
+            }
+            br.close();
+            br = new BufferedReader(new FileReader(fileName));
+            String s = br.readLine();
+            width = s.length();
+            this.map = new char[width][height];
+            for (int y=0;y<height;y++){
+                for (int x=0;x<width;x++){
+                    this.map[x][y]=s.toCharArray()[x];
+                }
+                s=br.readLine();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            this.height = height;
+            this.width = width;
+        }
+
+
+        respawnListOfThings();
+    }
+
+
     private void respawnListOfThings(){
         renderList.clear();
         for (int x=0;x<width;x++){
@@ -70,7 +117,7 @@ public class Dungeon {
                     System.out.print((map[x][y]));
                 }
             }
-            System.out.println("");
+            System.out.println();
         }
 
     }
