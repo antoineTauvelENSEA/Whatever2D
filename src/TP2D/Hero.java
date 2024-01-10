@@ -3,6 +3,7 @@ package TP2D;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
+import java.time.DateTimeException;
 import java.util.Date;
 
 public final class Hero extends DynamicThings{
@@ -61,13 +62,7 @@ public final class Hero extends DynamicThings{
 
     @Override
     public void draw(Graphics g){
-        int attitude = switch (orientation) {
-            case UP -> 2;
-            case DOWN -> 0;
-            case LEFT -> 1;
-            case RIGHT -> 3;
-            default -> 0;
-        };
+        int attitude = orientation.getI();
         int index = (int) ((System.currentTimeMillis()/125)%10);
         index=isWalking?index:0;
         g.drawImage(image,(int)x,(int)y,(int)x+48,(int) y+ 52,index*96,100*attitude,(index+1)*96,100*(attitude+1),null,null);

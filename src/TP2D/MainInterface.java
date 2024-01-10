@@ -45,25 +45,25 @@ public class MainInterface extends JFrame implements KeyListener {
         switch (e.getKeyCode()){
             case KeyEvent.VK_LEFT:
                 System.out.println("Left");
-                hero.moveIfPossible(-3,0,dungeon);
+                hero.moveIfPossible(-7,0,dungeon);
                 hero.setOrientation(Orientation.LEFT);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_RIGHT:
                 System.out.println("Right");
-                hero.moveIfPossible(3,0,dungeon);
+                hero.moveIfPossible(7,0,dungeon);
                 hero.setOrientation(Orientation.RIGHT);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_UP:
                 System.out.println("Up");
-                hero.moveIfPossible(0,-3,dungeon);
+                hero.moveIfPossible(0,-7,dungeon);
                 hero.setOrientation(Orientation.UP);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_DOWN:
                 System.out.println("Down");
-                hero.moveIfPossible(0,3,dungeon);
+                hero.moveIfPossible(0,7,dungeon);
                 hero.setOrientation(Orientation.DOWN);
                 hero.setWalking(true);
                 break;
