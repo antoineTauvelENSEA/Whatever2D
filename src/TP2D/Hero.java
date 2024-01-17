@@ -35,6 +35,14 @@ public final class Hero extends DynamicThings{
         this.orientation = orientation;
     }
 
+    public boolean isWalking() {
+        return isWalking;
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+
     public void moveIfPossible(double dx, double dy, Dungeon dungeon){
         boolean movePossible=true;
         this.getHitBox().move(dx,dy);

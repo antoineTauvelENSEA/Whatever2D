@@ -26,6 +26,20 @@ public class MainInterface extends JFrame implements KeyListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 repaint();
+                final int speed=10;
+                if (hero.isWalking()){
+                    switch (hero.getOrientation()){
+                        case LEFT:  hero.moveIfPossible(-speed,0,dungeon);
+                                    break;
+                        case RIGHT: hero.moveIfPossible(speed,0,dungeon);
+                                    break;
+                        case UP:    hero.moveIfPossible(0,-speed,dungeon);
+                                    break;
+                        case DOWN:  hero.moveIfPossible(0,speed,dungeon);
+                                    break;
+
+                    }
+                }
             }
         };
         Timer timer = new Timer(50,animationTimer);
@@ -44,26 +58,18 @@ public class MainInterface extends JFrame implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()){
             case KeyEvent.VK_LEFT:
-                System.out.println("Left");
-                hero.moveIfPossible(-7,0,dungeon);
                 hero.setOrientation(Orientation.LEFT);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_RIGHT:
-                System.out.println("Right");
-                hero.moveIfPossible(7,0,dungeon);
                 hero.setOrientation(Orientation.RIGHT);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_UP:
-                System.out.println("Up");
-                hero.moveIfPossible(0,-7,dungeon);
                 hero.setOrientation(Orientation.UP);
                 hero.setWalking(true);
                 break;
             case KeyEvent.VK_DOWN:
-                System.out.println("Down");
-                hero.moveIfPossible(0,7,dungeon);
                 hero.setOrientation(Orientation.DOWN);
                 hero.setWalking(true);
                 break;
@@ -74,6 +80,5 @@ public class MainInterface extends JFrame implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         hero.setWalking(false);
-
     }
 }
